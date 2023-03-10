@@ -1,23 +1,23 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
-
-<html lang=en-US>
-<head>
-
-    <title>A minimal html website</title>
-    <link type="text/css" href="latest.css" rel=stylesheet>
-
-<body>
-<div class=head>
-    <h1>A minimal html website</h1>
-</div>
-<p>A placeholder put here as an example for nesting projects or starting with an ultra-minimal template</p>
-<p>Some indicators here to reflect update freshness</p>
-<p>Last updated: <i id="last-updated">today</i></p>
-<div class="todays-color">&nbsp;</div>
-<code>
-
-
-</code>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en-US">
+  <head>
+    <title>A minimal HTML website</title>
+    <link type="text/css" href="latest.css" rel="stylesheet"/>
+  </head>
+  <body>
+  <div class="head"><h1>A minimal html website</h1></div>
+  <p>A placeholder put here as an example for nesting projects or starting with an ultra-minimal template</p>
+  <p>Some indicators here to reflect update freshness</p>
+  <p>Last updated: <i id="last-updated">NOW</i></p>
+  <div class="todays-color">&#160;</div>
+To update self:
+<pre>
+    xmlstarlet ed -P --inplace --update  "//i[@id='last-updated']" -v "$(date --iso-8601=m)"  index.html
+    echo ".todays-color {background-color: #$(openssl rand -hex 3);} " &gt; latest.css
+    git add index.html latest.css
+    git commit -m "Updated site with latest date"
+</pre>
 
 </body>
 </html>
